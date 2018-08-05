@@ -25,7 +25,9 @@ router.get('/', function(req, res, next) {
     // });
 
     Article.find().then((articles) => {
-       res.render('index', { articles });
+        Author.find().then((authors) => {
+            res.render('index', { articles, authors });
+        }, e => res.send(e));
     }, (e) => {
         res.render("A problem occurred while saving the article.");
     });

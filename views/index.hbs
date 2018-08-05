@@ -10,10 +10,16 @@
 <div class="newArticle">
     <h3>Add a new Article:</h3>
     <form method="post" action="/submitArticle">
-        <span class="title">Title:</span> <input type="text">
+        <span class="title">Title:</span> <input name="title" type="text">
         <br/>
-        <span class="body">Body: </span><textarea type="text"></textarea>
+        <span class="body">Body: </span><textarea name="body"></textarea>
         <br/>
+        {{#if authors}}
+            Select an author: <br />
+            {{#each authors}}
+                <input type="radio" name="author" value={{this._id}} >{{this.name}} <br/>
+            {{/each}}
+        {{/if}}
         <input class="submitButton" type="submit" placeholder="Submit">
     </form>
 </div>

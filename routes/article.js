@@ -13,16 +13,12 @@ router.get('/article/:articleId', function (req, res, next) {
 
     Article.findById(req.params.articleId).then((article) => {
 
-        if (article.author.length > 0) {
             Author.findById(article.author[0]).then((author) => {
-                res.render('article', { article, author });
+                res.render('article', {article, author});
             }, (e) => {
                 res.send(e);
             });
-        } else {
-            res.render('article', { article });
-        }
-        // res.render('article', { article });
+
     }, (e) => {
         res.render(e + "Specified article does not exist");
     });

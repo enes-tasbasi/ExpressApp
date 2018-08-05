@@ -17,6 +17,8 @@ let articleRouter = require('./routes/article');
 var contactRouter = require('./routes/contact');
 let authorRouter = require('./routes/author');
 const {changeFormat} = require('./public/javascripts/utils');
+let {Article} = require('./models/articles');
+let {Author} = require('./models/authors');
 
 var app = express();
 
@@ -42,6 +44,19 @@ app.get('/users', usersRouter);
 app.get('/article/:articleTitle', articleRouter);
 app.get('/contact', contactRouter);
 app.get('/author/:authorId', authorRouter);
+
+app.post('/submitArticle', (req, res) => {
+
+    let article = new Article;
+    article.title = req.body.title;
+    article.body = req.body.body;
+    article.author[0] = req.body.author;
+    article.save().then((doc) => {
+        res.redirect('/');
+    }, (e) => {
+        res.render("Couldn't save the article");
+    });
+});
 
 
 // catch 404 and forward to error handler
