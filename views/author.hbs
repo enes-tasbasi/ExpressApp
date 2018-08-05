@@ -1,0 +1,11 @@
+
+<h2>Author: {{ author.name }}</h2>
+
+<h3>{{ author.name }} is the author of the following articles:</h3>
+
+<ul>
+    {{#each articles}}
+        <li><a href="/article/{{this._id}}">{{this.title}}</a></li>
+        <p>{{this.body}}</p>
+    {{/each}}
+</ul>

@@ -1,0 +1,19 @@
+<h3>Featured Articles</h3>
+<ul>
+    {{#each articles}}
+        <li><a href="/article/{{this._id}}">{{this.title}}</a></li>
+        <p>{{this.body}}</p>
+    {{/each}}
+</ul>
+<br>
+
+<div class="newArticle">
+    <h3>Add a new Article:</h3>
+    <form method="post" action="/submitArticle">
+        <span class="title">Title:</span> <input type="text">
+        <br/>
+        <span class="body">Body: </span><textarea type="text"></textarea>
+        <br/>
+        <input class="submitButton" type="submit" placeholder="Submit">
+    </form>
+</div>

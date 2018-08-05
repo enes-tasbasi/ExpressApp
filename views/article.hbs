@@ -1,0 +1,11 @@
+<h2>{{ article.title}}</h2>
+
+<p>{{ article.body }}</p>
+
+{{#if article.date }}
+    <p>Date: {{ article.date }} </p>
+{{/if}}
+
+{{#if author}}
+    <p>Written by <a href="/author/{{ author._id}}">{{ author.name }} </a></p>
+{{/if}}

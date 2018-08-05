@@ -1,0 +1,104 @@
+
+body {
+    margin: auto;
+    padding: 10px;
+    width: 800px;
+    height: fit-content;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, p, a, li {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+a {
+    color: blue;
+    text-decoration: none;
+}
+
+/*HEADER*/
+
+.header {
+    background-color: antiquewhite;
+    border-radius: 5px;
+}
+
+.header ul {
+    list-style-type: none;
+    padding: 20px;
+    margin: auto;
+    width: 70%;
+    cursor: default;
+}
+
+.header ul li {
+    display: inline;
+    font-size: 25px;
+    padding: 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    color: coral;
+
+}
+
+.header ul li a {
+    color: coral;
+}
+
+/*FOOTER*/
+
+.footer {
+    background-color: antiquewhite;
+    border-radius: 5px;
+    height: 100px;
+}
+
+.footer ul {
+    list-style-type: none;
+    padding: 20px;
+    margin: 200px auto 10px auto;
+    width: 70%;
+    cursor: default;
+}
+
+.footer ul li {
+    display: inline;
+    font-size: 15px;
+    padding: 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    color: coral;
+    transition: 1s ease-in;
+}
+
+li:hover {
+    text-decoration: underline;
+}
+
+.newArticle {
+     width: 100%;
+    background-color: antiquewhite;
+    padding: 15px;
+}
+
+.newArticle input {
+    margin: 5px;
+}
+
+.newArticle .body {
+    position: absolute;
+}
+
+.newArticle textarea {
+    position: relative;
+    left: 39px;
+    width: 400px;
+    height:100px;
+    max-width: 600px;
+}
+
+.newArticle .submitButton {
+    height: 30px;
+    position: relative;
+    left: 45px;
+}
