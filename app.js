@@ -9,6 +9,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const hbs = require('hbs');
+const mongoose = require('mongoose');
 
 
 var indexRouter = require('./routes/index');
@@ -45,12 +46,14 @@ app.get('/article/:articleTitle', articleRouter);
 app.get('/contact', contactRouter);
 app.get('/author/:authorId', authorRouter);
 
+// this route gets called from the form in the main page
 app.post('/submitArticle', (req, res) => {
 
     let article = new Article;
     article.title = req.body.title;
     article.body = req.body.body;
-    article.author[0] = req.body.author;
+    article.author[0] = mongoose.Types.ObjectId(req.body.author);
+    console.log(article.author);
     article.save().then((doc) => {
         res.redirect('/');
     }, (e) => {

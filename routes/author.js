@@ -7,11 +7,10 @@ let {Author} = require('./../models/authors');
 let {Article} = require('./../models/articles');
 
 
-router.get('/author/:authorId', function (req, res, next) {
-// TODO: fix the issue were it doens't render all the corresponding articles
+router.get('/author/:authorId', function (req, res) {
     Author.findById(req.params.authorId).then((author) => {
         Article.find({author: [author._id]}).then((articles) => {
-            res.render('author', {author, articles});
+           res.render('author', {author, articles});
 
         });
     }).catch((e) => {
