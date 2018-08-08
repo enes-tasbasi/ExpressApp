@@ -17,7 +17,7 @@
         {{#if authors}}
             Select an author: <br />
             {{#each authors}}
-                <input type="radio" name="author" value={{this._id}} >{{this.name}} <br/>
+                <input id={{this._id}} type="radio" name="author" value={{this._id}}><label for="{{this._id}}">{{this.name}} </label><br/>
             {{/each}}
         {{/if}}
         <input class="submitButton" type="submit" placeholder="Submit">
