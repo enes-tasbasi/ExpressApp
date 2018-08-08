@@ -1,8 +1,8 @@
 
 body {
     margin: auto;
-    padding: 10px;
-    width: 800px;
+    padding: 8px;
+    width: 850px;
     height: fit-content;
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
@@ -38,7 +38,10 @@ a {
     cursor: pointer;
     border-radius: 5px;
     color: coral;
+}
 
+.header ul li:hover {
+    text-decoration: underline;
 }
 
 .header ul li a {
@@ -71,12 +74,63 @@ a {
     transition: 1s ease-in;
 }
 
-li:hover {
+.footer ul li:hover {
+    text-decoration: underline;
+
+}
+
+/*BODY*/
+
+.main-container .article-container {
+    border: 1px solid #ccc;
+    border-bottom: 0;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.main-container .article-container:last-child {
+    border-bottom: 1px solid #ccc;
+}
+
+.main-container ul {
+    padding: 0;
+}
+
+.main-container ul li {
+    word-wrap: break-word;
+    list-style-type: none;
+}
+
+.main-container ul li:hover {
     text-decoration: underline;
 }
 
+
+.delete-icon {
+    font-size: 25px;
+    cursor: pointer;
+    position: relative;
+    float: right;
+    color: #cc9097;
+}
+
+.delete-icon:hover {
+    animation: 500ms spin ease-in-out;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(180deg);
+    }
+}
+
+/*FORM*/
+
 .newArticle {
-     width: 100%;
+    width: 100%;
     background-color: antiquewhite;
     padding: 15px;
 }
@@ -93,7 +147,7 @@ li:hover {
     position: relative;
     left: 39px;
     width: 400px;
-    height:100px;
+    height: 100px;
     max-width: 600px;
 }
 
@@ -102,3 +156,4 @@ li:hover {
     position: relative;
     left: 45px;
 }
+

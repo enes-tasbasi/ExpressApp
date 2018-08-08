@@ -61,6 +61,15 @@ app.post('/submitArticle', (req, res) => {
     });
 });
 
+app.get('/deleteArticle/:articleId', (req, res) => {
+
+    Article.deleteOne({ _id: req.params.articleId }).then((doc) => {
+        res.redirect('/');
+    }, (e) => {
+        res.render("Couldn't remove article");
+    });
+});
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
