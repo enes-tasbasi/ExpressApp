@@ -7,7 +7,7 @@ body {
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6, p, a, li {
+h1, h2, h3, h4, h5, h6, p, a, li, input {
     font-family: 'Source Sans Pro', sans-serif;
 }
 
@@ -33,6 +33,10 @@ a {
 
 .header ul li {
     display: inline;
+
+}
+
+.header ul a {
     font-size: 25px;
     padding: 15px;
     cursor: pointer;
@@ -40,7 +44,7 @@ a {
     color: coral;
 }
 
-.header ul li:hover {
+.header ul a:hover {
     text-decoration: underline;
 }
 
@@ -81,30 +85,30 @@ a {
 
 /*BODY*/
 
-.main-container .article-container {
+.article-container {
     border: 1px solid #ccc;
     border-bottom: 0;
     padding: 15px;
     border-radius: 10px;
 }
 
-.main-container .article-container:last-child {
+.article-container:last-child {
     border-bottom: 1px solid #ccc;
 }
 
-.main-container ul {
+ul {
     padding: 0;
 }
 
-.main-container ul li {
-    word-wrap: break-word;
-    list-style-type: none;
+
+
+ul .article-title {
+    font-size: 18px;
 }
 
-.main-container ul li:hover {
+ ul .article-title:hover {
     text-decoration: underline;
 }
-
 
 .delete-icon {
     font-size: 25px;
@@ -130,13 +134,17 @@ a {
 /*FORM*/
 
 .newArticle {
-    width: 100%;
+    width: 96.5%;
     background-color: antiquewhite;
     padding: 15px;
 }
 
 .newArticle input {
     margin: 5px;
+}
+
+.newArticle #titleInput {
+    width: 400px;
 }
 
 .newArticle .body {
@@ -155,5 +163,12 @@ a {
     height: 30px;
     position: relative;
     left: 45px;
+    cursor: pointer;
+}
+
+.newArticle .disabled {
+    background-color: grey;
+    border: none;
+    cursor: not-allowed;
 }
 

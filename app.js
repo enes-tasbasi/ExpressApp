@@ -1,4 +1,3 @@
-
 // connect to mongodb
 require('./config/config');
 require('./db/mongoose');
@@ -23,21 +22,21 @@ let {Author} = require('./models/authors');
 
 var app = express();
 
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
 
 //register hbs partials
-hbs.registerPartials(__dirname +  '/views/partials');
+hbs.registerPartials(__dirname + '/views/partials');
 hbs.registerHelper('changeFormat', changeFormat);
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
 
 
 app.get('/', indexRouter);
@@ -47,23 +46,22 @@ app.get('/contact', contactRouter);
 app.get('/author/:authorId', authorRouter);
 
 // this route gets called from the form in the main page
-app.post('/submitArticle', (req, res) => {
+app.get('/submitArticle', (req, res) => {
 
     let article = new Article;
-    article.title = req.body.title;
-    article.body = req.body.body;
-    article.author[0] = mongoose.Types.ObjectId(req.body.author);
-    console.log(article.author);
+    article.title = req.query.title;
+    article.body = req.query.body;
+    article.author[0] = mongoose.Types.ObjectId(req.query.author);
     article.save().then((doc) => {
         res.redirect('/');
     }, (e) => {
-        res.render("Couldn't save the article");
+        res.send(e + "  Couldn't save the article");
     });
 });
 
 app.get('/deleteArticle/:articleId', (req, res) => {
 
-    Article.deleteOne({ _id: req.params.articleId }).then((doc) => {
+    Article.deleteOne({_id: req.params.articleId}).then((doc) => {
         res.redirect('/');
     }, (e) => {
         res.render("Couldn't remove article");
@@ -72,19 +70,19 @@ app.get('/deleteArticle/:articleId', (req, res) => {
 
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
+app.use(function (req, res, next) {
+    next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+app.use(function (err, req, res, next) {
+    // set locals, only providing error in development
+    res.locals.message = err.message;
+    res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+    // render the error page
+    res.status(err.status || 500);
+    res.render('error');
 });
 
 module.exports = app;

@@ -1,13 +1,12 @@
 <div class="main-container">
 
-
         <h3>Featured Articles</h3>
 
         <ul>
             {{#each articles}}
                 <div class="article-container">
                     <a href="/deleteArticle/{{this._id}}" class="delete-icon fas fa-times-circle"></a>
-                    <li><a href="/article/{{this._id}}">{{this.title}}</a></li>
+                    <a class="article-title" href="/article/{{this._id}}">{{this.title}}</a>
                     <p>{{this.body}}</p>
                 </div>
             {{/each}}
@@ -17,10 +16,10 @@
     <br>
     <div class="newArticle">
         <h3>Add a new Article:</h3>
-        <form method="post" action="/submitArticle">
-            <span class="title">Title:</span> <input name="title" type="text">
+
+            <span class="title">Title:</span> <input id="titleInput" name="title" type="text">
             <br/>
-            <span class="body">Body: </span><textarea name="body"></textarea>
+            <span class="body">Body: </span><textarea id="bodyInput" name="body"></textarea>
             <br/>
             {{#if authors}}
                 Select an author: <br/>
@@ -29,8 +28,8 @@
                         for="{{this._id}}">{{this.name}} </label><br/>
                 {{/each}}
             {{/if}}
-            <input class="submitButton" type="submit" placeholder="Submit">
-        </form>
+            <button class="submitButton">Submit</button>
+
     </div>
 
 </div>
