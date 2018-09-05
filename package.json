@@ -9,15 +9,18 @@
     "node": "8.2.1"
   },
   "dependencies": {
+    "bcrypt": "^3.0.0",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "express": "~4.16.0",
     "hbs": "~4.0.1",
     "http-errors": "~1.6.2",
     "jquery": "^3.3.1",
+    "jsonwebtoken": "^8.3.0",
     "lodash": "^4.17.10",
     "mongoose": "^5.2.6",
     "morgan": "~1.9.0",
-    "requirejs": "^2.3.5"
+    "requirejs": "^2.3.5",
+    "validator": "^10.5.0"
   }
 }

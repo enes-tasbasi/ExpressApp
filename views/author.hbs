@@ -7,7 +7,7 @@
     <div class="article-container">
         {{#each articles}}
             <a class="article-title" href="/article/{{this._id}}">{{this.title}}</a>
-            <p>{{this.body}}</p>
+            <p>{{articlePreview this.body}}</p>
         {{/each}}
     </div>
 </ul>

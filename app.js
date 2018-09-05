@@ -12,10 +12,10 @@ const mongoose = require('mongoose');
 
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 let articleRouter = require('./routes/article');
 var contactRouter = require('./routes/contact');
 let authorRouter = require('./routes/author');
+let userRouter = require('./routes/user');
 const {changeFormat} = require('./public/javascripts/utils');
 let {Article} = require('./models/articles');
 let {Author} = require('./models/authors');
@@ -31,6 +31,15 @@ app.set('view engine', 'hbs');
 //register hbs partials
 hbs.registerPartials(__dirname + '/views/partials');
 hbs.registerHelper('changeFormat', changeFormat);
+hbs.registerHelper('articlePreview', articlePreview);
+
+function articlePreview(body) {
+    if(body.length > 559) {
+        return body.slice(0, 555) + "...";
+    }
+
+    return body;
+}
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -40,10 +49,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.get('/', indexRouter);
-app.get('/users', usersRouter);
 app.get('/article/:articleTitle', articleRouter);
 app.get('/contact', contactRouter);
 app.get('/author/:authorId', authorRouter);
+app.post('/user', userRouter);
+app.get('/user/me', userRouter);
+app.post('/user/login', userRouter);
+app.delete('/user/me/token', userRouter);
 
 // this route gets called from the form in the main page
 app.get('/submitArticle', (req, res) => {

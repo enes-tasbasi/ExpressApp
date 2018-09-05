@@ -100,14 +100,16 @@ ul {
     padding: 0;
 }
 
-
-
 ul .article-title {
     font-size: 18px;
 }
 
- ul .article-title:hover {
+ul .article-title:hover {
     text-decoration: underline;
+}
+
+ul .article-body {
+    word-break: break-all;
 }
 
 .delete-icon {
@@ -120,6 +122,10 @@ ul .article-title {
 
 .delete-icon:hover {
     animation: 500ms spin ease-in-out;
+}
+
+.delete-icon:active {
+    color: red;
 }
 
 @keyframes spin {
@@ -164,11 +170,5 @@ ul .article-title {
     position: relative;
     left: 45px;
     cursor: pointer;
-}
-
-.newArticle .disabled {
-    background-color: grey;
-    border: none;
-    cursor: not-allowed;
 }
 
