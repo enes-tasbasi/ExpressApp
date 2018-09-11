@@ -4,10 +4,11 @@
 
 
 <ul>
-    <div class="article-container">
-        {{#each articles}}
+
+    {{#each articles}}
+        <div class="article-container">
             <a class="article-title" href="/article/{{this._id}}">{{this.title}}</a>
             <p>{{articlePreview this.body}}</p>
-        {{/each}}
-    </div>
+        </div>
+    {{/each}}
 </ul>
