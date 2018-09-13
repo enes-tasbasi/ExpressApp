@@ -3,9 +3,23 @@
         <li><a href="/">Home</a></li>
         <li><a href="">Articles</a></li>
         <li><a href="/contact">Contact</a></li>
-        <div>
-            <li>Login</li>
-            <li>Sign up</li>
-        </div>
+        <li class="nav-bar-login">
+            <a>Login/Sign Up</a>
+        </li>
     </ul>
+</div>
+
+<!--Login/Sign Up pop-up-->
+
+<div class="pop-up-background">
+    <div class="pop-up">
+        <div class="delete-icon fas fa-times-circle"></div>
+        <h1 id="form-header">Log In</h1>
+        <div class="form-container">
+            <label for="email">Email: </label><input id="email" type="text">
+            <label for="password">Password: </label><input id="password" type="password">
+            <button>Submit</button>
+            <p id="form-paragraph">Don't have an account? <p id="sign-up-button">Sign Up!</p></p>
+        </div>
+    </div>
 </div>
