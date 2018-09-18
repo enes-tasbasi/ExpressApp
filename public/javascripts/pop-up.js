@@ -1,13 +1,34 @@
 
+
 $('.form-container button').on('click', () => {
     let email = $('#email').val();
     let password = $('#password').val();
 
-    if($('#form-header').text() === "Log In") {
-        window.location.href = `/user/login?email=${email}&password=${password}`;
+    let body = { email, password };
+
+    if ($('#form-header').text() === "Log In") {
+
+        axios( {
+            method: 'post',
+            url: '/user/login',
+            data: body
+        }).then(data => {
+            $('body').removeClass('hidden');
+            $('.pop-up-background').removeClass('active');
+        }, err => console.log(err));
     } else {
-        window.location.href = `/user?email=${email}&password=${password}`;
+        axios( {
+            method: 'post',
+            url: '/user',
+            data: body
+        }).then(data => {
+            $('body').removeClass('hidden');
+            $('.pop-up-background').removeClass('active');
+
+        }, err => console.log(err));
     }
+
+
 });
 
 
@@ -17,7 +38,7 @@ let formParagraph = $('#form-paragraph');
 signUpButton.on('click', () => {
     let popOutHeader = $('#form-header');
 
-    if(popOutHeader.text() === "Log In") {
+    if (popOutHeader.text() === "Log In") {
         popOutHeader.text('Sign Up');
         formParagraph.text('Already have an account? ');
         signUpButton.text("Log In!");
@@ -29,16 +50,15 @@ signUpButton.on('click', () => {
 });
 
 
-
 // Toggles the pop-up window for log in and sign up
 $('.header .nav-bar-login a').on('click', () => {
-   $('body').addClass('hidden');
-   $('.pop-up-background').addClass('active');
+    $('body').addClass('hidden');
+    $('.pop-up-background').addClass('active');
 
 });
 
 $('.pop-up .delete-icon').on('click', () => {
-   $('body').removeClass('hidden');
-   $('.pop-up-background').removeClass('active');
+    $('body').removeClass('hidden');
+    $('.pop-up-background').removeClass('active');
 });
 

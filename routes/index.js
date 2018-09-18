@@ -5,25 +5,13 @@ const mongoose = require('mongoose');
 
 const {Article} = require('../models/articles');
 const {Author}  = require('../models/authors');
-
+let {authenticate} = require('../middleware/authenticate');
 
 /* GET home page. */
 
-router.get('/', function(req, res, next) {
+router.get('/',  function(req, res, next) {
 
-
-    // let temp = Article();
-    //
-    // temp.title = 'How to code';
-    // temp.body = 'Lorem ipsum.....';
-    // let aut = [type = mongoose.Types.ObjectId("5b63bbe1be6116828a82b407")];
-    // temp.author = aut;
-    // temp.save().then((doc) => {
-    //     res.send(doc);
-    // }, (e) => {
-    //     res.send(e);
-    // });
-
+    console.log('Access = ' + req.header('Cookie').split('=')[1]);
     Article.find().then((articles) => {
         Author.find().then((authors) => {
             res.render('index', { articles, authors });

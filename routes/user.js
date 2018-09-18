@@ -7,12 +7,13 @@ const {authenticate} = require('./../middleware/authenticate');
 
 router.post('/user', (req, res) => {
     let user = new User ({
-        email: req.query.email,
-        password: req.query.password
+        email: req.body.email,
+        password: req.body.password
     }).save().then((user) => {
         return user.generateAuthToken();
     }).then(({token, user}) => {
-        res.header('x-auth', token).send(user);
+       // res.header('x-auth', token).send(user);
+        res.header('Set-Cookie', 'access_token=' + token).send(user);
     }).catch((e) => {
         res.send(e);
     });
@@ -23,11 +24,12 @@ router.get('/user/me', authenticate, (req, res) => {
 });
 
 router.post('/user/login', (req, res) => {
-    let body = _.pick(req.query, ['email', 'password']);
+    let body = _.pick(req.body, ['email', 'password']);
 
     User.findByCredentials(body.email, body.password).then((user) => {
         return user.generateAuthToken().then(({token}) => {
-            res.header('x-auth', token).send(user);
+            res.header('Set-Cookie', 'access_token=' + token).send(user);
+          //  res.redirect('/');
         });
     }).catch((e) => {
         res.status(400).send();

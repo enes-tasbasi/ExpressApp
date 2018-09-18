@@ -8,6 +8,7 @@ $('.submitButton').on('click', function () {
         }
 
         window.location.href = url;
+
     } else {
         alert('Please fill both title and body of the article to submit it.');
     }

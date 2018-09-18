@@ -20,6 +20,8 @@ const {changeFormat} = require('./public/javascripts/utils');
 let {Article} = require('./models/articles');
 let {Author} = require('./models/authors');
 
+let {authenticate} = require('./middleware/authenticate');
+
 var app = express();
 
 
@@ -70,7 +72,6 @@ app.get('/submitArticle', (req, res) => {
         res.send(e + "  Couldn't save the article");
     });
 });
-
 app.get('/deleteArticle/:articleId', (req, res) => {
 
     Article.deleteOne({_id: req.params.articleId}).then((doc) => {
