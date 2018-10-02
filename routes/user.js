@@ -7,13 +7,14 @@ const {authenticate} = require('./../middleware/authenticate');
 
 router.post('/user', (req, res) => {
     let user = new User ({
+        name: req.body.name,
         email: req.body.email,
         password: req.body.password
     }).save().then((user) => {
         return user.generateAuthToken();
     }).then(({token, user}) => {
        // res.header('x-auth', token).send(user);
-        res.header('Set-Cookie', 'access_token=' + token).send(user);
+        res.header('x-auth', token).send(user);
     }).catch((e) => {
         res.send(e);
     });
@@ -28,7 +29,7 @@ router.post('/user/login', (req, res) => {
 
     User.findByCredentials(body.email, body.password).then((user) => {
         return user.generateAuthToken().then(({token}) => {
-            res.header('Set-Cookie', 'access_token=' + token).send(user);
+            res.header('x-auth', token).send(user);
           //  res.redirect('/');
         });
     }).catch((e) => {
@@ -38,7 +39,7 @@ router.post('/user/login', (req, res) => {
 
 router.delete('/user/me/token', authenticate, (req, res) => {
     req.user.removeToken(req.token).then(() => {
-        res.status(200).send();
+        res.status(200).send(req.user);
     }, () => {
         res.status(400).send();
     });

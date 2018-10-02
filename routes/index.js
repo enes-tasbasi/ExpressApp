@@ -9,9 +9,8 @@ let {authenticate} = require('../middleware/authenticate');
 
 /* GET home page. */
 
-router.get('/',  function(req, res, next) {
+router.get('/', function(req, res, next) {
 
-    console.log('Access = ' + req.header('Cookie').split('=')[1]);
     Article.find().then((articles) => {
         Author.find().then((authors) => {
             res.render('index', { articles, authors });

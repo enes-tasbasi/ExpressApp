@@ -5,6 +5,14 @@ const bcrypt = require('bcrypt');
 const _ = require('lodash');
 
 let UserSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true,
+        trim: true,
+        minLength: 1,
+        unique: false,
+
+    },
     email: {
         type: String,
         required: true,
@@ -50,7 +58,7 @@ UserSchema.methods.toJSON = function() {
   let user = this;
   let userObject = user.toObject();
 
-  return _.pick(userObject, ['_id', 'email']);
+  return _.pick(userObject, ['_id', 'email', 'name']);
 };
 
 UserSchema.pre('save', function(next) {
@@ -75,7 +83,7 @@ UserSchema.statics.findByToken = function (token) {
   try {
       decoded = jwt.verify(token, 'abc123');
   } catch(e) {
-      return Promise.reject();
+      return Promise.reject('The JWT is invalid');
   }
 
   return User.findOne({

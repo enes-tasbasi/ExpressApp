@@ -24,7 +24,7 @@ a {
 /*HEADER*/
 
 .header {
-    background-color: antiquewhite;
+    background-color: #FAEBD7;
     border-radius: 5px;
 }
 
@@ -94,12 +94,12 @@ a {
 
 .pop-up .form-container {
     width: 300px;
-    margin: 10% 18% 18% 18%;
+    margin: 5% 18% 18% 18%;
     justify-content: center;
     align-items: center;
 }
 
-.form-container #email, #password {
+.form-container #email, #password, #name {
     display: inline-block;
     margin: 5px;
     width: 60%;
@@ -109,6 +109,14 @@ a {
 
 .form-container #email {
     margin-left: 38px;
+}
+
+.form-container #name {
+    margin-left: 35px;
+}
+
+.form-container #name, #name-label {
+    display: none;
 }
 
 .form-container  label {
@@ -144,6 +152,10 @@ a {
     text-decoration: underline;
 }
 
+.form-container #wrong-credentials {
+    color: red;
+    display: none;
+}
 
 /*FOOTER*/
 
@@ -234,7 +246,7 @@ ul .article-body {
 
 .newArticle {
     width: 96.5%;
-    background-color: antiquewhite;
+    background-color: #FAEBD7;
     padding: 15px;
 }
 

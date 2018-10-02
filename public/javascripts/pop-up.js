@@ -3,29 +3,29 @@
 $('.form-container button').on('click', () => {
     let email = $('#email').val();
     let password = $('#password').val();
+    let name = $('#name').val();
 
-    let body = { email, password };
 
     if ($('#form-header').text() === "Log In") {
 
         axios( {
             method: 'post',
             url: '/user/login',
-            data: body
+            data: { email, password }
         }).then(data => {
             $('body').removeClass('hidden');
             $('.pop-up-background').removeClass('active');
-        }, err => console.log(err));
+        }, err => $('#wrong-credentials').css('display', 'block'));
     } else {
         axios( {
             method: 'post',
             url: '/user',
-            data: body
+            data: { name, email, password }
         }).then(data => {
             $('body').removeClass('hidden');
             $('.pop-up-background').removeClass('active');
 
-        }, err => console.log(err));
+        }, err =>  $('#wrong-credentials').css('display', 'block'));
     }
 
 
@@ -35,6 +35,8 @@ $('.form-container button').on('click', () => {
 // toggles the sign-up/log-in header as well as the text on the bottom
 let signUpButton = $('#sign-up-button');
 let formParagraph = $('#form-paragraph');
+let nameInput = $('#name');
+let nameLabel = $('#name-label');
 signUpButton.on('click', () => {
     let popOutHeader = $('#form-header');
 
@@ -42,10 +44,15 @@ signUpButton.on('click', () => {
         popOutHeader.text('Sign Up');
         formParagraph.text('Already have an account? ');
         signUpButton.text("Log In!");
+        nameInput.css('display', 'inline-block');
+        nameLabel.css('display', 'inline-block');
+
     } else {
         popOutHeader.text('Log In');
         formParagraph.text("Don't have an account? ");
         signUpButton.text('Sign Up!');
+        nameInput.css('display', 'none');
+        nameLabel.css('display', 'none');
     }
 });
 
