@@ -1,5 +1,16 @@
 
 
+// add the action listeners for the sign-out button
+$('#sign-out').on('click', function () {
+    axios({
+        method: 'delete',
+        url: '/user/me/token'
+    }).then(data => {
+       location.reload();
+    });
+})
+
+// adds the action listeners for the log in/sign up button and sends the post requests with the appropriate data
 $('.form-container button').on('click', () => {
     let email = $('#email').val();
     let password = $('#password').val();
@@ -15,6 +26,7 @@ $('.form-container button').on('click', () => {
         }).then(data => {
             $('body').removeClass('hidden');
             $('.pop-up-background').removeClass('active');
+            location.reload();
         }, err => $('#wrong-credentials').css('display', 'block'));
     } else {
         axios( {
@@ -24,7 +36,7 @@ $('.form-container button').on('click', () => {
         }).then(data => {
             $('body').removeClass('hidden');
             $('.pop-up-background').removeClass('active');
-
+            location.reload();
         }, err =>  $('#wrong-credentials').css('display', 'block'));
     }
 

@@ -13,8 +13,7 @@ router.post('/user', (req, res) => {
     }).save().then((user) => {
         return user.generateAuthToken();
     }).then(({token, user}) => {
-       // res.header('x-auth', token).send(user);
-        res.header('x-auth', token).send(user);
+        res.cookie('auth', token).send(user);
     }).catch((e) => {
         res.send(e);
     });
@@ -29,8 +28,7 @@ router.post('/user/login', (req, res) => {
 
     User.findByCredentials(body.email, body.password).then((user) => {
         return user.generateAuthToken().then(({token}) => {
-            res.header('x-auth', token).send(user);
-          //  res.redirect('/');
+            res.cookie('auth', token).send(req.header);
         });
     }).catch((e) => {
         res.status(400).send();
@@ -39,7 +37,8 @@ router.post('/user/login', (req, res) => {
 
 router.delete('/user/me/token', authenticate, (req, res) => {
     req.user.removeToken(req.token).then(() => {
-        res.status(200).send(req.user);
+        res.clearCookie('auth');
+        res.status(200).send('JWT removed');
     }, () => {
         res.status(400).send();
     });

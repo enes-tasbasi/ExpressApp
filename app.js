@@ -10,7 +10,6 @@ var logger = require('morgan');
 const hbs = require('hbs');
 const mongoose = require('mongoose');
 
-
 var indexRouter = require('./routes/index');
 let articleRouter = require('./routes/article');
 var contactRouter = require('./routes/contact');
@@ -34,6 +33,7 @@ app.set('view engine', 'hbs');
 hbs.registerPartials(__dirname + '/views/partials');
 hbs.registerHelper('changeFormat', changeFormat);
 hbs.registerHelper('articlePreview', articlePreview);
+hbs.registerHelper('setVariable', setVariable);
 
 function articlePreview(body) {
     if(body.length > 559) {
@@ -43,12 +43,16 @@ function articlePreview(body) {
     return body;
 }
 
+function setVariable(name, value, options) {
+    options.data.root[name] = value;
+}
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(cookieParser());
 
 app.get('/', indexRouter);
 app.get('/article/:articleTitle', articleRouter);

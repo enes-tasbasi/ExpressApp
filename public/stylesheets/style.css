@@ -8,6 +8,7 @@ body {
 
 }
 
+
 .hidden {
     overflow: hidden;
 }
@@ -42,7 +43,7 @@ a {
 }
 
 .header ul a {
-    font-size: 25px;
+    font-size: 1.8em;
     padding: 15px;
     cursor: pointer;
     border-radius: 5px;
@@ -58,7 +59,17 @@ a {
 }
 
 .header ul .nav-bar-login {
+    float: right;
+}
 
+.header ul #name-greeting {
+    font-size: 1.8em;
+    color: coral;
+    float: right;
+}
+
+.header ul #sign-out {
+    font-size: 20px;
 }
 
 /*Login/SignUp pop-up*/

@@ -3,9 +3,13 @@
         <li><a href="/">Home</a></li>
         <li><a href="">Articles</a></li>
         <li><a href="/contact">Contact</a></li>
-        <li class="nav-bar-login">
-            <a>Login/Sign Up</a>
-        </li>
+        {{#if user }}
+            <li id="name-greeting">Hello, {{user.name}}  <a id="sign-out">Sign out</a></li>
+        {{else}}
+            <li class="nav-bar-login">
+                <a>Login/Sign Up</a>
+            </li>
+        {{/if}}
     </ul>
 </div>
 
@@ -21,7 +25,8 @@
             <label for="email">Email: </label><input id="email" type="text">
             <label for="password">Password: </label><input id="password" type="password">
             <button>Submit</button>
-            <p id="form-paragraph">Don't have an account? <p id="sign-up-button">Sign Up!</p></p>
+            <p id="form-paragraph">Don't have an account?
+            <p id="sign-up-button">Sign Up!</p></p>
         </div>
     </div>
 </div>
