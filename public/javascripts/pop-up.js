@@ -8,7 +8,14 @@ $('#sign-out').on('click', function () {
     }).then(data => {
        location.reload();
     });
-})
+});
+
+//add the key press listener for the enter key
+$('.form-container #email, #password, #name').keypress(function(e) {
+   if(e.keyCode == 13) {
+       $('.form-container button').click();
+   }
+});
 
 // adds the action listeners for the log in/sign up button and sends the post requests with the appropriate data
 $('.form-container button').on('click', () => {

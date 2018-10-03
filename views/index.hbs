@@ -1,7 +1,9 @@
 <div class="main-container">
 
-        <h3>Featured Articles</h3>
 
+    {{#if articles.length }}
+        <h3>Featured Articles</h3>
+    {{/if}}
         <ul>
             {{#each articles}}
                 <div class="article-container">

@@ -25,7 +25,7 @@ a {
 /*HEADER*/
 
 .header {
-    background-color: #FAEBD7;
+    background-color: #636363;
     border-radius: 5px;
 }
 
@@ -47,7 +47,7 @@ a {
     padding: 15px;
     cursor: pointer;
     border-radius: 5px;
-    color: coral;
+    color: #8dcc4d;
 }
 
 .header ul a:hover {
@@ -55,7 +55,7 @@ a {
 }
 
 .header ul li a {
-    color: coral;
+    color: #DBDBDB;
 }
 
 .header ul .nav-bar-login {
@@ -64,12 +64,14 @@ a {
 
 .header ul #name-greeting {
     font-size: 1.8em;
-    color: coral;
+    color: #DBDBDB;
     float: right;
+    font-weight: lighter;
 }
 
 .header ul #sign-out {
     font-size: 20px;
+    font-weight: lighter;
 }
 
 /*Login/SignUp pop-up*/
@@ -94,7 +96,7 @@ a {
 .pop-up {
     height: 300px;
     width: 500px;
-    background-color: white;
+    background-color: #DBDBDB;
     text-align: center;
     padding: 20px;
     position: relative;
@@ -139,7 +141,7 @@ a {
 .form-container button {
     width: 80px;
     height: 40px;
-    background-color: #58cc4a;
+    background-color: #636363;
     margin: 5px;
     font-weight: bold;
     color: white;
@@ -150,8 +152,8 @@ a {
 
 .form-container button:hover {
     background-color: white;
-    border: 2px solid #58cc4a;
-    color: #58cc4a;
+    border: 2px solid #636363;
+    color: #636363;
 }
 
 .form-container #sign-up-button {
@@ -171,7 +173,7 @@ a {
 /*FOOTER*/
 
 .footer {
-    background-color: antiquewhite;
+    background-color: #636363;
     border-radius: 5px;
     height: 100px;
 }
@@ -190,7 +192,7 @@ a {
     padding: 15px;
     cursor: pointer;
     border-radius: 5px;
-    color: coral;
+    color: #DBDBDB;
     transition: 1s ease-in;
 }
 
@@ -233,7 +235,7 @@ ul .article-body {
     cursor: pointer;
     position: relative;
     float: right;
-    color: #cc9097;
+    color: #636363;
 }
 
 .delete-icon:hover {
@@ -257,7 +259,7 @@ ul .article-body {
 
 .newArticle {
     width: 96.5%;
-    background-color: #FAEBD7;
+    background-color: #DBDBDB;
     padding: 15px;
 }
 
@@ -281,10 +283,23 @@ ul .article-body {
     max-width: 600px;
 }
 
-.newArticle .submitButton {
-    height: 30px;
-    position: relative;
-    left: 45px;
+
+.newArticle .submitButton{
+    left: 50px;
+    width: 80px;
+    height: 40px;
+    background-color: #636363;
+    margin: 5px;
+    font-weight: bold;
+    color: white;
+    border: none;
+    transition: 200ms;
     cursor: pointer;
+}
+
+.newArticle .submitButton:hover {
+    background-color: white;
+    border: 2px solid #636363;
+    color: #636363;
 }
 
