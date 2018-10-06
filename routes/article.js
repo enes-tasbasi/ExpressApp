@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 let {changeFormat, pickElement} = require('./../public/javascripts/utils');
 let {Article} = require('../models/articles');
 let {Author} = require('../models/authors');
+let {authenticate} = require
 
 
 router.get('/article/:articleId', function (req, res, next) {

@@ -54,9 +54,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser());
 
-app.get('/', indexRouter);
+app.get('/', authenticate,  indexRouter);
 app.get('/article/:articleTitle', articleRouter);
-app.get('/contact', contactRouter);
+app.get('/contact', authenticate, contactRouter);
 app.get('/author/:authorId', authorRouter);
 app.post('/user', userRouter);
 app.get('/user/me', userRouter);

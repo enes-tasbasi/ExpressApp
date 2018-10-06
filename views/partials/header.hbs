@@ -1,17 +1,19 @@
-<div class="header">
+<nav class="header">
+    <i class="fas fa-bars"></i>
     <ul>
         <li><a href="/">Home</a></li>
         <li><a href="">Articles</a></li>
         <li><a href="/contact">Contact</a></li>
         {{#if user }}
-            <li id="name-greeting">Hello, {{user.name}}  <a id="sign-out">Sign out</a></li>
+
+            <li class="nav-bar-signout"><a id="sign-out"><span>Logged in as {{user.name}}, </span>Sign out</a></li>
         {{else}}
             <li class="nav-bar-login">
                 <a>Login/Sign Up</a>
             </li>
         {{/if}}
     </ul>
-</div>
+</nav>
 
 <!--Login/Sign Up pop-up-->
 

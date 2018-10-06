@@ -9,7 +9,7 @@ let {authenticate} = require('../middleware/authenticate');
 
 /* GET home page. */
 
-router.get('/', authenticate,  function(req, res, next) {
+router.get('/',  function(req, res, next) {
 
     Article.find().then((articles) => {
         Author.find().then((authors) => {

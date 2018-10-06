@@ -15,7 +15,7 @@ router.post('/user', (req, res) => {
     }).then(({token, user}) => {
         res.cookie('auth', token).send(user);
     }).catch((e) => {
-        res.send(e);
+        res.status(400).send(e);
     });
 });
 

@@ -35,6 +35,7 @@ $('.form-container button').on('click', () => {
             $('.pop-up-background').removeClass('active');
             location.reload();
         }, err => $('#wrong-credentials').css('display', 'block'));
+
     } else {
         axios( {
             method: 'post',
@@ -44,7 +45,11 @@ $('.form-container button').on('click', () => {
             $('body').removeClass('hidden');
             $('.pop-up-background').removeClass('active');
             location.reload();
-        }, err =>  $('#wrong-credentials').css('display', 'block'));
+        }, err => {
+            $('#wrong-credentials').css('display', 'block');
+        });
+
+
     }
 
 
@@ -65,13 +70,14 @@ signUpButton.on('click', () => {
         signUpButton.text("Log In!");
         nameInput.css('display', 'inline-block');
         nameLabel.css('display', 'inline-block');
-
+        $('#wrong-credentials').css('display', 'none');
     } else {
         popOutHeader.text('Log In');
         formParagraph.text("Don't have an account? ");
         signUpButton.text('Sign Up!');
         nameInput.css('display', 'none');
         nameLabel.css('display', 'none');
+        $('#wrong-credentials').css('display', 'none');
     }
 });
 
@@ -88,3 +94,9 @@ $('.pop-up .delete-icon').on('click', () => {
     $('.pop-up-background').removeClass('active');
 });
 
+// hide/show the nav-bar items when the nav-bar button is clicked
+
+$('.header .fa-bars').on('click', function() {
+    $('.header ul').toggleClass('open');
+    $(this).toggleClass('open');
+});

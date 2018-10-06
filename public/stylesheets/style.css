@@ -1,77 +1,81 @@
+/** {*/
+    /*outline: 1px solid red;*/
+/*}*/
+
 
 body {
     margin: auto;
-    padding: 8px;
-    width: 850px;
+    padding: 2px;
+    width: 80%;
     height: fit-content;
-    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-
+    font: 14px "Source Sans Pro", Helvetica, Arial, sans-serif;
+    overflow-x: hidden;
+    background-color: #f4f4f4;
 }
 
-
+ /*for the pop-up menu*/
 .hidden {
     overflow: hidden;
 }
 
+/* Global */
+
 h1, h2, h3, h4, h5, h6, p, a, li, input, label, button {
-    font-family: 'Source Sans Pro', sans-serif;
+
 }
 
-a {
-    color: blue;
-    text-decoration: none;
-}
 
 /*HEADER*/
 
 .header {
     background-color: #636363;
     border-radius: 5px;
+    width: 100%;
+    min-height: 70px;
+}
+
+.header .fa-bars {
+    color: #ffffff;
+    font-size: 30px;
+    float: right;
+    padding: 20px;
+    cursor: pointer;
+    display: none;
 }
 
 .header ul {
+    padding-top: 20px;
     list-style-type: none;
-    padding: 20px;
-    margin: auto;
-    width: 70%;
     cursor: default;
 }
 
 .header ul li {
     display: inline;
+    transition: 300ms ease-in-out;
 
 }
 
 .header ul a {
+    text-decoration: none;
     font-size: 1.8em;
-    padding: 15px;
+    padding: 10px 10px 10px 10px;
     cursor: pointer;
-    border-radius: 5px;
-    color: #8dcc4d;
+    color: #DBDBDB;
+    transition: 100ms ease-in;
 }
 
 .header ul a:hover {
     text-decoration: underline;
 }
 
-.header ul li a {
-    color: #DBDBDB;
+.header ul .nav-bar-login, .header ul .nav-bar-signout {
+    float: right;
+    margin-right: 20px;
 }
 
-.header ul .nav-bar-login {
-    float: right;
-}
-
-.header ul #name-greeting {
-    font-size: 1.8em;
-    color: #DBDBDB;
-    float: right;
-    font-weight: lighter;
-}
 
 .header ul #sign-out {
-    font-size: 20px;
-    font-weight: lighter;
+    /*float: right;*/
 }
 
 /*Login/SignUp pop-up*/
@@ -94,20 +98,17 @@ a {
 }
 
 .pop-up {
-    height: 300px;
+    height: fit-content;
     width: 500px;
     background-color: #DBDBDB;
     text-align: center;
-    padding: 20px;
-    position: relative;
     border-radius: 4px;
-    display: block;
     cursor: default;
 }
 
 .pop-up .form-container {
-    width: 300px;
-    margin: 5% 18% 18% 18%;
+    width: 60%;
+    margin: 5% 18% 5% 18%;
     justify-content: center;
     align-items: center;
 }
@@ -138,7 +139,7 @@ a {
     float: left;
 }
 
-.form-container button {
+.form-container button, .submitButton {
     width: 80px;
     height: 40px;
     background-color: #636363;
@@ -150,7 +151,7 @@ a {
     cursor: pointer;
 }
 
-.form-container button:hover {
+.form-container button:hover, .submitButton:hover {
     background-color: white;
     border: 2px solid #636363;
     color: #636363;
@@ -180,16 +181,17 @@ a {
 
 .footer ul {
     list-style-type: none;
-    padding: 20px;
+    padding: 40px;
     margin: 200px auto 10px auto;
     width: 70%;
     cursor: default;
+    text-align: center;
 }
 
 .footer ul li {
     display: inline;
     font-size: 15px;
-    padding: 15px;
+    padding: 10px 10px 10px 20px;
     cursor: pointer;
     border-radius: 5px;
     color: #DBDBDB;
@@ -203,23 +205,31 @@ a {
 
 /*BODY*/
 
+.main-container {
+    width: 100%;
+}
+
 .article-container {
     border: 1px solid #ccc;
     border-bottom: 0;
-    padding: 15px;
     border-radius: 10px;
+    padding: 1px;
 }
 
 .article-container:last-child {
     border-bottom: 1px solid #ccc;
 }
 
-ul {
+.main-container ul {
     padding: 0;
 }
 
 ul .article-title {
+    display: block;
     font-size: 18px;
+    padding: 5px 10px 5px 15px;
+    margin-top: 10px;
+    text-decoration: none;
 }
 
 ul .article-title:hover {
@@ -228,14 +238,17 @@ ul .article-title:hover {
 
 ul .article-body {
     word-break: break-all;
+    padding: 5px 10px 5px 15px;
 }
 
 .delete-icon {
+    padding: 15px;
     font-size: 25px;
     cursor: pointer;
     position: relative;
     float: right;
     color: #636363;
+    text-decoration: none;
 }
 
 .delete-icon:hover {
@@ -258,17 +271,27 @@ ul .article-body {
 /*FORM*/
 
 .newArticle {
-    width: 96.5%;
+    border-radius: 5px;
+    width: 100%;
     background-color: #DBDBDB;
-    padding: 15px;
+    position: relative;
+}
+
+.newArticle h3, .newArticle span, .newArticle button {
+    padding: 10px;
 }
 
 .newArticle input {
     margin: 5px;
+
+}
+
+.newArticle * {
+    margin: 5px;
 }
 
 .newArticle #titleInput {
-    width: 400px;
+    width: 45%;
 }
 
 .newArticle .body {
@@ -277,29 +300,62 @@ ul .article-body {
 
 .newArticle textarea {
     position: relative;
-    left: 39px;
-    width: 400px;
+    left: 63px;
+    width: 45%;
     height: 100px;
     max-width: 600px;
+    min-width: 200px;
 }
 
 
-.newArticle .submitButton{
-    left: 50px;
-    width: 80px;
-    height: 40px;
-    background-color: #636363;
-    margin: 5px;
-    font-weight: bold;
-    color: white;
-    border: none;
-    transition: 200ms;
-    cursor: pointer;
-}
+@media(max-width: 840px) {
+    body {
+        width: 95%;
+    }
 
-.newArticle .submitButton:hover {
-    background-color: white;
-    border: 2px solid #636363;
-    color: #636363;
+    .header {
+        margin-top: 10px;
+
+    }
+
+    .header ul {
+        display: none;
+        text-align: center;
+        padding: 0 0 10px 0;
+        transition: 500ms ease-in-out;
+    }
+
+    .header ul.open {
+        display: block;
+        transition: 500ms ease-in-out;
+    }
+
+    .header ul li {
+        display: block;
+        padding: 10px;
+    }
+
+
+    .header ul  li, .header ul .nav-bar-login, .header ul .nav-bar-signout, .main-container .newArticle .article-title  {
+        width: 100%;
+        float: none;
+    }
+
+    .header .fa-bars {
+        right: 20px;
+        position: absolute;
+        display: block;
+        transition: 300ms ease-in-out;
+    }
+
+    .header .fa-bars.open {
+        transform: rotate(90deg);
+    }
+
+    .main-container .newArticle #titleInput, .main-container .newArticle #bodyInput {
+        width: 80%;
+    }
+
+    .footer
 }
 
