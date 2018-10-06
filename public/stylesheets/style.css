@@ -1,18 +1,15 @@
 
-
-
 body {
+    min-height: auto;
     margin: auto;
     padding: 2px;
     width: 80%;
-    height: fit-content;
     font: 14px "Source Sans Pro", Helvetica, Arial, sans-serif;
     overflow-x: hidden;
     background: linear-gradient(#DBDBDB, #636363);
 }
 
-
- /*for the pop-up menu*/
+/*for the pop-up menu*/
 .hidden {
     overflow: hidden;
 }
@@ -22,7 +19,6 @@ body {
 h1, h2, h3, h4, h5, h6, p, a, li, input, label, button {
 
 }
-
 
 /*HEADER*/
 
@@ -72,7 +68,6 @@ h1, h2, h3, h4, h5, h6, p, a, li, input, label, button {
     margin-right: 20px;
 }
 
-
 .header ul #sign-out {
     /*float: right;*/
 }
@@ -103,6 +98,38 @@ h1, h2, h3, h4, h5, h6, p, a, li, input, label, button {
     text-align: center;
     border-radius: 4px;
     cursor: default;
+    transition: 500ms ease-in-out;
+}
+
+.pop-up.slide-in {
+    animation: 500ms slide-in ease-in-out;
+
+}
+
+.pop-up.slide-out {
+    animation: 500ms slide-out ease-in-out;
+}
+
+@keyframes slide-in {
+    0% {
+        opacity: 0.2;
+        transform: translate(900px, -100px) rotate(30deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+}
+
+@keyframes slide-out {
+    0% {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+    100% {
+        opacity: 0.2;
+        transform: translate(-900px, 100px) rotate(-30deg);
+    }
 }
 
 .pop-up .form-container {
@@ -132,7 +159,7 @@ h1, h2, h3, h4, h5, h6, p, a, li, input, label, button {
     display: none;
 }
 
-.form-container  label {
+.form-container label {
     font-size: 1.5em;
     font-weight: bold;
     float: left;
@@ -168,6 +195,28 @@ h1, h2, h3, h4, h5, h6, p, a, li, input, label, button {
 .form-container #wrong-credentials {
     color: red;
     display: none;
+}
+
+.form-container #wrong-credentials.shake {
+    animation: 500ms shake ease-in-out;
+}
+
+@keyframes shake {
+    0% {
+        transform: translateX(40px);
+    }
+    25% {
+        transform: translateX(-30px);
+    }
+    50% {
+        transform: translateX(20px);
+    }
+    75% {
+        transform: translateX(-10px);
+    }
+    100% {
+        transform: translateX(0px);
+    }
 }
 
 /*FOOTER*/
@@ -307,8 +356,7 @@ ul .article-body {
     min-width: 200px;
 }
 
-
-@media(max-width: 840px) {
+@media (max-width: 840px) {
     body {
         width: 95%;
     }
@@ -335,8 +383,7 @@ ul .article-body {
         padding: 10px;
     }
 
-
-    .header ul  li, .header ul .nav-bar-login, .header ul .nav-bar-signout, .main-container .newArticle .article-title  {
+    .header ul li, .header ul .nav-bar-login, .header ul .nav-bar-signout, .main-container .newArticle .article-title {
         width: 100%;
         float: none;
     }

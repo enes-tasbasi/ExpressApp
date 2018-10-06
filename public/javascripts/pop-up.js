@@ -1,20 +1,18 @@
-
-
 // add the action listeners for the sign-out button
 $('#sign-out').on('click', function () {
     axios({
         method: 'delete',
         url: '/user/me/token'
     }).then(data => {
-       location.reload();
+        location.reload();
     });
 });
 
 //add the key press listener for the enter key
-$('.form-container #email, #password, #name').keypress(function(e) {
-   if(e.keyCode == 13) {
-       $('.form-container button').click();
-   }
+$('.form-container #email, #password, #name').keypress(function (e) {
+    if (e.keyCode == 13) {
+        $('.form-container button').click();
+    }
 });
 
 // adds the action listeners for the log in/sign up button and sends the post requests with the appropriate data
@@ -26,27 +24,31 @@ $('.form-container button').on('click', () => {
 
     if ($('#form-header').text() === "Log In") {
 
-        axios( {
+        axios({
             method: 'post',
             url: '/user/login',
-            data: { email, password }
-        }).then(data => {
-            $('body').removeClass('hidden');
-            $('.pop-up-background').removeClass('active');
-            location.reload();
-        }, err => $('#wrong-credentials').css('display', 'block'));
-
-    } else {
-        axios( {
-            method: 'post',
-            url: '/user',
-            data: { name, email, password }
+            data: {email, password}
         }).then(data => {
             $('body').removeClass('hidden');
             $('.pop-up-background').removeClass('active');
             location.reload();
         }, err => {
             $('#wrong-credentials').css('display', 'block');
+            $('#wrong-credentials').toggleClass('shake');
+        });
+
+    } else {
+        axios({
+            method: 'post',
+            url: '/user',
+            data: {name, email, password}
+        }).then(data => {
+            $('body').removeClass('hidden');
+            $('.pop-up-background').removeClass('active');
+            location.reload();
+        }, err => {
+            $('#wrong-credentials').css('display', 'block');
+            $('#wrong-credentials').toggleClass('shake');
         });
 
 
@@ -87,16 +89,26 @@ $('.header .nav-bar-login a').on('click', () => {
     $('body').addClass('hidden');
     $('.pop-up-background').addClass('active');
 
+    $('.pop-up').removeClass('slide-out')
+    $('.pop-up').addClass('slide-in');
 });
 
 $('.pop-up .delete-icon').on('click', () => {
-    $('body').removeClass('hidden');
-    $('.pop-up-background').removeClass('active');
+
+    // set timeout is set to 500ms so that the pop-up menu can finish its slide-out animation
+    setTimeout(function () {
+        $('body').removeClass('hidden');
+        $('.pop-up-background').removeClass('active');
+    }, 500);
+
+    $('.pop-up').removeClass('slide-in');
+    $('.pop-up').addClass('slide-out');
+    $('#wrong-credentials').css('display', 'none');
 });
 
 // hide/show the nav-bar items when the nav-bar button is clicked
 
-$('.header .fa-bars').on('click', function() {
+$('.header .fa-bars').on('click', function () {
     $('.header ul').toggleClass('open');
     $(this).toggleClass('open');
 });
