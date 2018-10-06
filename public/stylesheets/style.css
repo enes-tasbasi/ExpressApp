@@ -1,6 +1,4 @@
-/** {*/
-    /*outline: 1px solid red;*/
-/*}*/
+
 
 
 body {
@@ -10,8 +8,9 @@ body {
     height: fit-content;
     font: 14px "Source Sans Pro", Helvetica, Arial, sans-serif;
     overflow-x: hidden;
-    background-color: #f4f4f4;
+    background: linear-gradient(#DBDBDB, #636363);
 }
+
 
  /*for the pop-up menu*/
 .hidden {
@@ -214,6 +213,7 @@ h1, h2, h3, h4, h5, h6, p, a, li, input, label, button {
     border-bottom: 0;
     border-radius: 10px;
     padding: 1px;
+    background-color: #f4f4f4;
 }
 
 .article-container:last-child {
